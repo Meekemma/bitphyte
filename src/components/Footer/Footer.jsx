@@ -1,15 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../Header/Logo";
 
 const Footer = () => {
-  const companyLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Plans", href: "/plans" },
-    { name: "FAQs", href: "/faq" },
-    { name: "Contact", href: "/contact" },
-  ];
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const scrollToPlans = () => {
+    const element = document.getElementById("plans");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handlePlansClick = (e) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      scrollToPlans();
+    } else {
+      navigate("/", { state: { scrollToPlans: true } });
+    }
+  };
 
   const legalLinks = [
     { name: "Terms of Service", href: "/terms" },
@@ -29,15 +40,21 @@ const Footer = () => {
         <div>
           <h3 className="font-heading font-semibold text-white mb-4">Company</h3>
           <nav className="flex flex-col space-y-2 text-sm font-medium">
-            {companyLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="hover:text-indigo transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
+            <Link to="/" className="hover:text-indigo transition-colors">
+              Home
+            </Link>
+            <Link to="/about" className="hover:text-indigo transition-colors">
+              About Us
+            </Link>
+            <a href="/#plans" onClick={handlePlansClick} className="hover:text-indigo transition-colors">
+              Plans
+            </a>
+            <Link to="/faq" className="hover:text-indigo transition-colors">
+              FAQs
+            </Link>
+            <Link to="/contact" className="hover:text-indigo transition-colors">
+              Contact
+            </Link>
           </nav>
         </div>
 
@@ -75,4 +92,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
 

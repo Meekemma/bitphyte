@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faEnvelope, faCommentDots } from "@fortawesome/free-solid-svg-icons";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -32,57 +34,59 @@ const Contact = () => {
       <h2 className="text-4xl font-heading text-indigo font-bold mb-10 text-center">
         Contact Us
       </h2>
-      <p className="text-lg text-gray-300 mb-10 text-center">Send us a message below and we'll be in touch</p>
+      <p className="text-lg text-gray-300 mb-10 text-center">
+        Send us a message below and we'll be in touch
+      </p>
 
       {success && (
-        <div className="bg-green-600 text-white px-6 py-4 rounded-md mb-8 text-center max-w-4xl mx-auto">
+        <div className="bg-green-600 text-white px-6 py-4 rounded-md mb-8 text-center max-w-xl mx-auto">
           Your message has been sent successfully!
         </div>
       )}
 
       <form
         onSubmit={handleSubmit}
-        className="bg-gray-900 p-8 rounded-xl shadow-md w-full max-w-4xl mx-auto"
+        className="bg-gray-900 p-8 rounded-xl shadow-md w-full max-w-xl mx-auto"
       >
+        {/* Name */}
         <div className="mb-6">
-          <label className="block text-softGray text-sm font-medium mb-2">
-            Name
-          </label>
+          <FontAwesomeIcon icon={faUser} className="text-indigo mb-2 text-xl" />
           <input
             type="text"
             name="name"
+            placeholder="Your name"
             value={formData.name}
             required
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-indigo"
+            className="w-full px-4 py-3 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-indigo placeholder-gray-400"
           />
         </div>
 
+        {/* Email */}
         <div className="mb-6">
-          <label className="block text-softGray text-sm font-medium mb-2">
-            Email
-          </label>
+          <FontAwesomeIcon icon={faEnvelope} className="text-indigo mb-2 text-xl" />
           <input
             type="email"
             name="email"
+            placeholder="Your email"
             value={formData.email}
             required
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-indigo"
+            className="w-full px-4 py-3 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-indigo placeholder-gray-400"
           />
         </div>
 
+        {/* Message */}
         <div className="mb-6">
-          <label className="block text-softGray text-sm font-medium mb-2">
-            Message
-          </label>
+          <FontAwesomeIcon icon={faCommentDots} className="text-indigo mb-2 text-xl" />
           <textarea
             name="message"
+            placeholder="Your message"
             value={formData.message}
             required
             onChange={handleChange}
             rows={5}
-            className="w-full px-4 py-3 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-indigo resize-none"
+            className="w-full px-4 py-3 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-indigo placeholder-gray-400 resize-none"
           />
         </div>
 
@@ -97,10 +101,7 @@ const Contact = () => {
       <div className="text-center mt-10 space-y-4">
         <p className="text-softGray">
           Send us an email at{" "}
-          <a
-            href="mailto:support@bitphyte.com"
-            className="text-indigo underline"
-          >
+          <a href="mailto:support@bitphyte.com" className="text-indigo underline">
             support@bitphyte.com
           </a>
         </p>
@@ -110,4 +111,7 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
+
 

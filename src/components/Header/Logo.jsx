@@ -1,8 +1,20 @@
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Logo = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleClick = () => {
+    if (location.pathname === "/") {
+      window.location.reload();
+    } else {
+      navigate("/");
+    }
+  };
+
   return (
-    <div className="flex items-center space-x-2">
+    <div onClick={handleClick} className="flex items-center space-x-2 cursor-pointer">
       <img
         src="/bitphyte_logo.png"
         alt="BitPhyte Logo"
@@ -21,4 +33,5 @@ const Logo = () => {
 };
 
 export default Logo;
+
 

@@ -17,4 +17,8 @@ export default defineConfig({
       },
     },
   },
+  optimizeDeps: {
+    include: ['react-icons/fi', 'react-icons/fa'],
+  },
 });
+

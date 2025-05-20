@@ -1,107 +1,122 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
-const COINS = [
-  "bitcoin",
-  "ethereum",
-  "binancecoin",
-  "cardano",
-  "solana",
-  "tether",
-  "xrp",
-];
+const retryFetch = async (fn, retries = 3, delay = 1000) => {
+  try {
+    return await fn();
+  } catch (err) {
+    if (retries <= 0) throw err;
+    await new Promise((r) => setTimeout(r, delay));
+    return retryFetch(fn, retries - 1, delay * 2); // exponential back-off
+  }
+};
 
 const CryptoCalculator = () => {
+  const [coins, setCoins] = useState([]);
   const [prices, setPrices] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [state, setState] = useState({ loading: true, error: null });
+  const [amount, setAmount] = useState("1");
+  const [selectedCoin, setSelectedCoin] = useState("");
 
-  const [amount, setAmount] = useState(1);
-  const [selectedCoin, setSelectedCoin] = useState("bitcoin");
+  const intervalRef = useRef(5000);
+  const timerRef = useRef(null);
 
-  // Fetch prices from CoinGecko
+  const fetchTopCoins = async () => {
+    try {
+      const res = await retryFetch(() =>
+        fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false")
+      );
+      if (!res.ok) throw new Error("Failed to fetch coin list");
+      const json = await res.json();
+      setCoins(json);
+      if (!selectedCoin) setSelectedCoin(json[0].id); // set default selected coin
+    } catch (err) {
+      setState({ loading: false, error: err.message || "Error fetching coin list" });
+    }
+  };
+
   const fetchPrices = async () => {
     try {
-      const res = await fetch(
-        `https://api.coingecko.com/api/v3/simple/price?ids=${COINS.join(
-          ","
-        )}&vs_currencies=usd`
+      const ids = coins.map((coin) => coin.id).join(",");
+      const res = await retryFetch(() =>
+        fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`)
       );
       if (!res.ok) throw new Error("Failed to fetch prices");
       const json = await res.json();
       setPrices(json);
-      setLoading(false);
-      setError(null);
+      setState({ loading: false, error: null });
+      intervalRef.current = 5000;
     } catch (err) {
-      setError(err.message || "Error fetching prices");
-      setLoading(false);
+      setState({ loading: false, error: err.message || "Error fetching prices" });
+      intervalRef.current = Math.min(intervalRef.current * 2, 30000);
     }
   };
 
   useEffect(() => {
-    fetchPrices();
-    const interval = setInterval(fetchPrices, 5000);
-    return () => clearInterval(interval);
+    fetchTopCoins();
   }, []);
+
+  useEffect(() => {
+    if (coins.length > 0) {
+      fetchPrices();
+      timerRef.current = setInterval(fetchPrices, intervalRef.current);
+    }
+    return () => clearInterval(timerRef.current);
+  }, [coins]);
+
+  useEffect(() => {
+    clearInterval(timerRef.current);
+    if (coins.length > 0) {
+      timerRef.current = setInterval(fetchPrices, intervalRef.current);
+    }
+  }, [intervalRef.current]);
 
   const handleAmountChange = (e) => {
     const val = e.target.value;
-    if (val === "" || /^[0-9]*\.?[0-9]*$/.test(val)) {
-      setAmount(val);
-    }
+    if (val === "" || /^[0-9]*\.?[0-9]*$/.test(val)) setAmount(val);
   };
 
   const convertedValue =
     amount && prices[selectedCoin]
-      ? (parseFloat(amount) * prices[selectedCoin].usd).toFixed(2)
+      ? (parseFloat(amount || 0) * prices[selectedCoin].usd).toFixed(2)
       : "0.00";
 
   return (
-    <section className="max-w-7xl mt-12 mx-auto p-6 bg-gray-900 rounded-lg shadow-lg text-gray-800">
+    <section className="max-w-7xl mt-12 mx-auto p-6 bg-gray-900 rounded-lg shadow-lg text-gray-300">
       <h2 className="text-3xl font-bold mb-2 text-indigo text-center">Crypto Calculator</h2>
-      <p classname="text-2xl md:text-lg text-gray-300 mb-10">Find out the current value of any crypto</p>
+      <p className="text-lg text-gray-400 mb-10 text-center">
+        Find out the current value of any top 50 crypto
+      </p>
 
-      {loading && (
-        <p className="text-center py-10 text-gray-500 animate-pulse">
-          Loading prices...
-        </p>
-      )}
+      {state.loading && <p className="text-center py-10 animate-pulse">Loading prices…</p>}
+      {state.error && <p className="text-center py-4 text-red-500">{state.error}</p>}
 
-      {error && (
-        <p className="text-center py-10 text-red-600 font-semibold">{error}</p>
-      )}
-
-      {!loading && !error && (
+      {!state.loading && coins.length > 0 && (
         <div className="max-w-md mx-auto bg-gray-800 p-6 mt-4 rounded-lg shadow-md">
-          <label className="block mb-2 text-indigo-300 font-semibold">
-            Select Cryptocurrency
-          </label>
+          <label className="block mb-2 text-indigo font-semibold">Select Cryptocurrency</label>
           <select
-            className="w-full mb-4 p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="w-full mb-4 p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo"
             value={selectedCoin}
             onChange={(e) => setSelectedCoin(e.target.value)}
           >
-            {COINS.map((coin) => (
-              <option key={coin} value={coin}>
-                {coin.charAt(0).toUpperCase() + coin.slice(1)}
+            {coins.map((coin) => (
+              <option key={coin.id} value={coin.id}>
+                {coin.name}
               </option>
             ))}
           </select>
 
-          <label className="block mb-2 text-indigo-300 font-semibold">
-            Amount
-          </label>
+          <label className="block mb-2 text-indigo font-semibold">Amount</label>
           <input
-            type="text"
             value={amount}
             onChange={handleAmountChange}
-            className="w-full mb-6 p-2 rounded bg-gray-700 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="w-full mb-6 p-2 rounded bg-gray-700 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-indigo"
             placeholder="Enter amount"
           />
 
-          <div className="text-indigo-400 font-semibold text-xl text-center">
+          <div className="text-indigo font-semibold text-xl text-center">
             {amount && !isNaN(amount) ? (
               <>
-                {amount} {selectedCoin.charAt(0).toUpperCase() + selectedCoin.slice(1)} ={" "}
+                {amount} {selectedCoin.toUpperCase()} ={" "}
                 <span className="text-green-400">${convertedValue}</span>
               </>
             ) : (
@@ -115,3 +130,5 @@ const CryptoCalculator = () => {
 };
 
 export default CryptoCalculator;
+
+

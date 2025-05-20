@@ -1,26 +1,30 @@
 import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import AboutUsContainer from "../components/AboutContainer";
 import Team from "../components/Team";
+import AboutUsContainer from "../components/AboutContainer";
 import WhoWeAre from "../components/WhoWeAre";
 import WhyUs from "../components/WhyUs";
+import Footer from "../components/Footer/Footer";
 
 const AboutUs = () => {
-    return (
-        <div className="bg-dark text-softGray min-h-screen flex flex-col">
-            <Header />
-            <Team />
-            <AboutUsContainer />
-            <WhoWeAre />
-            <WhyUs />
-            <main className="flex-grow container mx-auto px-8 py-20">
-                <h1 className="text-3xl font-extrabold text-indigo mb-4 font-heading">About Us</h1>
-                <p className="text-gray-300 text-sm max-w-xl mb-8 leading-relaxed">
-                    Welcome to Bitphyte, your trusted platform for crypto investment. We are dedicated to providing a secure and user-friendly experience for all our users.
-                </p>
-            </main>
-            <Footer />
+  return (
+    <div className="bg-dark text-softGray min-h-screen flex flex-col">
+      <Header />
+      <Team />
+      <AboutUsContainer />
+      <WhoWeAre />
+      <WhyUs />
+
+      <main className="flex-grow bg-gradient-to-br from-gray-900 via-gray-950 to-black py-24 px-6 md:px-16">
+        <div className="max-w-5xl mx-auto text-center">
+          <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto mb-10">
+            Bitphyte is redefining how individuals approach crypto investment. Our platform blends powerful tools, a seamless user interface, and enterprise-level security to create a smooth investment experience for everyone—from beginners to experts.
+          </p>
         </div>
-    );
-}
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
 export default AboutUs;
