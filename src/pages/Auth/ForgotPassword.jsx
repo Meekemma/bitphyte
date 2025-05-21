@@ -44,22 +44,22 @@ const ForgotPassword = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-dark text-softGray px-4">
-      <div className="w-full mt-16 mb-16 max-w-xl bg-gray-900 p-8 rounded-xl shadow-md">
-        <h2 className="text-3xl font-heading text-indigo font-bold mb-8 text-center">
+      <div className="w-full mt-16 mb-16 max-w-xl bg-gradient-to-r from-navy via-greenGray to-navy p-8 rounded-xl shadow-md">
+        <h2 className="text-3xl font-heading text-softGray font-bold mb-8 text-center">
           Forgot Password
         </h2>
 
         {!submitted ? (
           <form onSubmit={handleForgot}>
             <div className="mb-6">
-              <FontAwesomeIcon icon={faEnvelope} className="text-indigo mb-2 text-xl" />
+              <FontAwesomeIcon icon={faEnvelope} className="text-softGray mb-2 text-xl" />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 required
-                className="w-full px-4 py-3 bg-gray-800 text-white rounded-md focus:ring-2 focus:ring-indigo focus:outline-none placeholder-gray-400"
+                className="w-full px-4 py-3 bg-lightGray text-dark rounded-md placeholder-mediumGray"
               />
             </div>
 
@@ -68,7 +68,7 @@ const ForgotPassword = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-indigo text-white font-semibold py-3 rounded-md hover:bg-indigo/90 transition duration-300"
+              className="w-full bg-navy text-softGray font-semibold py-3 rounded-md hover:bg-greenGray transition duration-300"
             >
               {loading ? "Sending..." : "Send Reset Link"}
             </button>
@@ -100,7 +100,7 @@ const ForgotPassword = () => {
                   setSubmitted(false);
                   setError("");
                 }}
-                className="text-indigo underline text-sm"
+                className="text-mediumGray underline text-sm"
               >
                 Edit email address
               </button>
@@ -111,7 +111,7 @@ const ForgotPassword = () => {
         <div className="text-center mt-6">
           <button
             onClick={() => navigate("/login")}
-            className="text-indigo underline text-sm"
+            className="text-softGray underline text-sm"
           >
             ← Back to Login
           </button>

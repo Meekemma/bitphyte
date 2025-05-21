@@ -14,9 +14,9 @@ const AboutUs = () => {
       <WhoWeAre />
       <WhyUs />
 
-      <main className="flex-grow bg-gradient-to-br from-gray-900 via-gray-950 to-black py-24 px-6 md:px-16">
+      <main className="flex-grow py-24 px-6 md:px-16">
         <div className="max-w-5xl mx-auto text-center">
-          <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto mb-10">
+          <p className="text-lg md:text-xl text-mediumGray leading-relaxed max-w-3xl mx-auto mb-10">
             Bitphyte is redefining how individuals approach crypto investment. Our platform blends powerful tools, a seamless user interface, and enterprise-level security to create a smooth investment experience for everyone—from beginners to experts.
           </p>
         </div>

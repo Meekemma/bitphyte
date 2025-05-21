@@ -57,19 +57,18 @@ const MarketData = () => {
   const handleReset     = () => { setViewCount(10); setPage(1); };
 
   return (
-    <section className="max-w-7xl mt-2 mx-auto p-6 bg-gray-900 rounded-lg shadow-lg text-gray-300">
-      <h2 className="text-3xl font-bold mb-6 text-indigo">Market Overview</h2>
+    <section className="bg-gradient-to-r from-navy via-greenGray to-navy max-w-7xl mt-2 mx-auto p-6 rounded-lg shadow-lg text-mediumGray">
+      <h2 className="text-3xl font-bold mb-6 text-softGray">Market Overview</h2>
 
       {state.loading && <p className="text-center py-10 animate-pulse">Loading market data…</p>}
       {state.error && <p className="text-center py-4 text-red-500">{state.error}</p>}
 
       {!state.loading && !state.error && (
         <>
-          {/* table unchanged */}
           <div className="overflow-x-auto">
             <table className="w-full table-auto border-collapse">
               <thead>
-                <tr className="bg-indigo/20 text-indigo">
+                <tr className="bg-lightGray text-navy">
                   <th className="p-3 text-left">Coin</th>
                   <th className="p-3 text-right">Price (USD)</th>
                   <th className="p-3 text-right">24h Change</th>

@@ -62,16 +62,16 @@ export default function FaqPage() {
   };
 
   return (
-    <div className="min-h-screen bg-dark text-gray-100 py-12 px-6 md:px-20">
+    <div className="min-h-screen bg-dark text-softGray py-12 px-6 md:px-20">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-heading text-indigo font-bold mb-10 text-center">Frequently Asked Questions</h1>
-        <p className="text-center text-gray-300 mb-12">
+        <h1 className="text-4xl font-heading text-softGray font-bold mb-10 text-center">Frequently Asked Questions</h1>
+        <p className="text-center text-mediumGray mb-12">
           Got questions? We've got answers. Learn more about BitPhyte and how it works.
         </p>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="border border-gray-200 rounded-xl shadow-sm bg-gray-900">
+            <div key={index} className="border border-lightGray rounded-xl shadow-sm bg-gradient-to-r from-navy via-greenGray to-navy">
               <button
                 className="w-full flex justify-between items-center px-6 py-4 text-left focus:outline-none"
                 onClick={() => toggleFAQ(index)}
@@ -84,20 +84,35 @@ export default function FaqPage() {
                 )}
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-4 text-gray-400">{faq.answer}</div>
+                <div className="px-6 pb-4 text-mediumGray">{faq.answer}</div>
               )}
             </div>
           ))}
         </div>
 
         <div className="mt-16 text-center">
-          <h2 className="text-xl font-semibold text-indigo mb-2">Still have questions?</h2>
-          <p className="text-gray-300 mb-4">
+          <h2 className="text-xl font-semibold text-softGray mb-2">Still have questions?</h2>
+          <p className="text-mediumGray mb-4">
             Contact our support team or check our Help Center for more details.
           </p>
           <a
             href="/contact"
-            className="inline-block px-6 py-3 bg-indigo text-white rounded-lg shadow hover:bg-blue-700 transition"
+            className="
+            bg-indigo
+            text-softGray
+            mt-20
+            hover:bg-indigo-700 
+            transition-colors 
+            px-6 py-3 sm:px-8 sm:py-4 
+            rounded-lg 
+            text-lg sm:text-xl 
+            font-semibold 
+            shadow-lg
+            focus:outline-none 
+            focus:ring-4 
+            focus:ring-indigo-400
+            focus:ring-opacity-50
+            "
           >
             Contact Support
           </a>

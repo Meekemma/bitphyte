@@ -81,9 +81,9 @@ const CryptoCalculator = () => {
       : "0.00";
 
   return (
-    <section className="max-w-7xl mt-12 mx-auto p-6 bg-gray-900 rounded-lg shadow-lg text-gray-300">
-      <h2 className="text-3xl font-bold mb-2 text-indigo text-center">Crypto Calculator</h2>
-      <p className="text-lg text-gray-400 mb-10 text-center">
+    <section className="max-w-7xl mt-12 mx-auto p-6 bg-gradient-to-r from-navy via-greenGray to-navy rounded-lg shadow-lg text-mediumGray">
+      <h2 className="text-3xl font-bold mb-2 text-softGray text-center">Crypto Calculator</h2>
+      <p className="text-lg text-mediumGray mb-10 text-center">
         Find out the current value of any top 50 crypto
       </p>
 
@@ -91,10 +91,10 @@ const CryptoCalculator = () => {
       {state.error && <p className="text-center py-4 text-red-500">{state.error}</p>}
 
       {!state.loading && coins.length > 0 && (
-        <div className="max-w-md mx-auto bg-gray-800 p-6 mt-4 rounded-lg shadow-md">
-          <label className="block mb-2 text-indigo font-semibold">Select Cryptocurrency</label>
+        <div className="max-w-md mx-auto bg-lightGray p-6 mt-4 rounded-lg shadow-md">
+          <label className="block mb-2 text-navy font-semibold">Select Cryptocurrency</label>
           <select
-            className="w-full mb-4 p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo"
+            className="w-full mb-4 p-2 rounded bg-navy text-white focus:outline-none focus:ring-2 focus:ring-indigo"
             value={selectedCoin}
             onChange={(e) => setSelectedCoin(e.target.value)}
           >
@@ -105,15 +105,15 @@ const CryptoCalculator = () => {
             ))}
           </select>
 
-          <label className="block mb-2 text-indigo font-semibold">Amount</label>
+          <label className="block mb-2 text-navy font-semibold">Amount</label>
           <input
             value={amount}
             onChange={handleAmountChange}
-            className="w-full mb-6 p-2 rounded bg-gray-700 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-indigo"
+            className="w-full mb-6 p-2 rounded bg-navy text-navy font-mono text-lg focus:outline-none focus:ring-2 focus:ring-indigo"
             placeholder="Enter amount"
           />
 
-          <div className="text-indigo font-semibold text-xl text-center">
+          <div className="text-navy font-semibold text-xl text-center">
             {amount && !isNaN(amount) ? (
               <>
                 {amount} {selectedCoin.toUpperCase()} ={" "}

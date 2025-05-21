@@ -68,8 +68,8 @@ export default function ResetPassword() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-dark text-softGray px-4">
-      <div className="w-full mt-16 mb-16 max-w-xl bg-gray-900 p-8 rounded-xl shadow-md">
-        <h2 className="text-3xl font-heading text-indigo font-bold mb-8 text-center">
+      <div className="w-full mt-16 mb-16 max-w-xl bg-gradient-to-r from-navy via-greenGray to-navy p-8 rounded-xl shadow-md">
+        <h2 className="text-3xl font-heading text-softGray font-bold mb-8 text-center">
           Reset Your Password
         </h2>
 
@@ -78,7 +78,7 @@ export default function ResetPassword() {
 
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-softGray mb-1">
               New Password
             </label>
             <input
@@ -88,12 +88,12 @@ export default function ResetPassword() {
               placeholder="Enter new password"
               required
               minLength={6}
-              className="w-full px-4 py-3 bg-gray-800 text-white rounded-md focus:ring-2 focus:ring-indigo focus:outline-none placeholder-gray-400"
+              className="w-full px-4 py-3 bg-lightGray text-dark rounded-md placeholder-mediumGray"
             />
           </div>
 
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-softGray mb-1">
               Confirm New Password
             </label>
             <input
@@ -103,21 +103,21 @@ export default function ResetPassword() {
               placeholder="Confirm new password"
               required
               minLength={6}
-              className="w-full px-4 py-3 bg-gray-800 text-white rounded-md focus:ring-2 focus:ring-indigo focus:outline-none placeholder-gray-400"
+              className="w-full px-4 py-3 bg-lightGray text-dark rounded-md placeholder-mediumGray"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-indigo text-white font-semibold py-3 rounded-md hover:bg-indigo/90 transition duration-300"
+            className="w-full bg-navy text-softGray font-semibold py-3 rounded-md hover:bg-greenGray transition duration-300"
           >
             {loading ? 'Resetting...' : 'Reset Password'}
           </button>
         </form>
 
         <div className="text-center mt-6">
-          <Link to="/login" className="text-indigo underline text-sm">
+          <Link to="/login" className="text-softGray underline text-sm">
             ← Back to Login
           </Link>
         </div>

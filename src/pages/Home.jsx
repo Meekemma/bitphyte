@@ -51,16 +51,16 @@ const Home = () => {
           hover:scale-[1.02] hover:shadow-2xl
         "
       >
-        <h1 className="text-3xl font-extrabold text-indigo mb-4 font-heading">
+        <h1 className="text-3xl font-extrabold text-softGray mb-4 font-heading">
           Bitphyte
         </h1>
-        <p className="text-gray-300 text-sm max-w-xl mb-8 leading-relaxed">
+        <p className="text-mediumGray text-sm max-w-xl mb-8 leading-relaxed">
           Your trusted platform for crypto investment. Invest securely and watch your balance grow.
         </p>
         <button
           onClick={handleSignup}
           className="
-            mt-4 bg-indigo text-white font-semibold px-8 py-3 rounded-full
+            mt-4 bg-indigo text-softGray font-semibold px-8 py-3 rounded-full
             shadow-md
             transform
             transition

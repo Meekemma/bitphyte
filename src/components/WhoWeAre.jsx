@@ -24,14 +24,15 @@ const CompanyOverview = () => {
     <section className="max-w-5xl mx-auto px-6 py-16 space-y-20 text-gray-800">
       {/* Who We Are */}
       <motion.div
-        className="bg-gray-900 rounded-lg p-8 shadow-lg"
+        className="bg-gradient-to-r from-navy via-greenGray to-navy
+ rounded-lg p-8 shadow-lg"
         initial="offscreen"
         whileInView="onscreen"
         viewport={{ once: true, amount: 0.3 }}
         variants={slideRightToLeft}
       >
-        <h2 className="text-indigo text-4xl font-bold mb-4">Who We Are</h2>
-        <p className="text-gray-200 text-lg leading-relaxed">
+        <h2 className="text-softGray text-4xl font-bold mb-4">Who We Are</h2>
+        <p className="text-mediumGray text-lg leading-relaxed">
           Bitphyte is a blockchain innovation company focused on simplifying access to crypto
           solutions. We’re passionate about building secure, user-friendly tools that make
           decentralized finance accessible to everyone.
@@ -40,14 +41,14 @@ const CompanyOverview = () => {
 
       {/* What We Do */}
       <motion.div
-        className="bg-gray-900 rounded-lg p-8 shadow-lg"
+        className="bg-gradient-to-r from-navy via-greenGray to-navy rounded-lg p-8 shadow-lg"
         initial="offscreen"
         whileInView="onscreen"
         viewport={{ once: true, amount: 0.3 }}
         variants={slideLeftToRight}
       >
-        <h2 className="text-indigo text-4xl font-bold mb-4">What We Do</h2>
-        <p className="text-gray-200 text-lg leading-relaxed">
+        <h2 className="text-softGray text-4xl font-bold mb-4">What We Do</h2>
+        <p className="text-mediumGray text-lg leading-relaxed">
           We provide real-time crypto market data, trading tools, and blockchain-powered solutions
           for individuals and businesses. Our goal is to drive adoption through reliable and
           scalable tech.

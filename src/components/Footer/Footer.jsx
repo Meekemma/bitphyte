@@ -28,7 +28,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-dark border-t border-lightGray text-softGray py-12">
+    <footer className="bg-dark border-t border-lightGray text-mediumGray py-12">
       <div className="container mx-auto px-4 flex flex-col md:flex-row md:justify-between md:items-start gap-10 md:gap-20">
         <div className="max-w-xs">
           <Logo />
@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="font-heading font-semibold text-white mb-4">Company</h3>
+          <h3 className="font-heading font-semibold text-softGray mb-4">Company</h3>
           <nav className="flex flex-col space-y-2 text-sm font-medium">
             <Link to="/" className="hover:text-indigo transition-colors">
               Home
@@ -59,7 +59,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="font-heading font-semibold text-white mb-4">Legal</h3>
+          <h3 className="font-heading font-semibold text-softGray mb-4">Legal</h3>
           <nav className="flex flex-col space-y-2 text-sm font-medium">
             {legalLinks.map((link) => (
               <Link
@@ -74,7 +74,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="font-heading font-semibold text-white mb-4">Contact</h3>
+          <h3 className="font-heading font-semibold text-softGray mb-4">Contact</h3>
           <address className="not-italic text-sm space-y-2 text-mediumGray">
             <p>123 BitPhyte Lane</p>
             <p>Investment City, FinState 45678</p>

@@ -43,6 +43,7 @@ const Hero = () => {
           onClick={() => navigate("/signup")}
           className="
             bg-indigo
+            text-softGray
             mt-20
             hover:bg-indigo-700 
             transition-colors 

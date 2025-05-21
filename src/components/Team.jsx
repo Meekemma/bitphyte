@@ -32,8 +32,8 @@ const teamMembers = [
 
 const Team = () => {
   return (
-    <section className="w-full bg-dark text-softGray py-20 px-4 md:px-12 lg:px-24">
-      <h2 className="text-4xl font-heading text-indigo font-extrabold mb-16 text-center">
+    <section className="w-full bg-dark text-mediumGray py-20 px-4 md:px-12 lg:px-24">
+      <h2 className="text-4xl font-heading text-softGray font-extrabold mb-16 text-center">
         Meet Our Core Team
       </h2>
 
@@ -41,7 +41,7 @@ const Team = () => {
         {teamMembers.map((member, index) => (
           <motion.div
             key={member.name}
-            className="bg-gray-900 rounded-2xl shadow-lg overflow-hidden p-6 flex flex-col items-center text-center hover:shadow-2xl transition duration-300"
+            className="bg-navy p-6 rounded-2xl shadow-lg drop-shadow-lg shadow-greenGray border border-gray-700/30 hover:shadow-indigo transition duration-300 text-left"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -51,15 +51,15 @@ const Team = () => {
             <img
               src={member.image}
               alt={member.name}
-              className="w-32 h-32 rounded-full object-cover mb-6 border-4 border-indigo"
+              className="w-32 h-32 rounded-full object-cover mb-6 border-4 border-greenGray"
             />
-            <h3 className="text-xl font-semibold text-indigo mb-1">
+            <h3 className="text-xl font-semibold text-softGray mb-1">
               {member.name}
             </h3>
-            <p className="text-sm text-mediumGray font-medium mb-4">
+            <p className="text-sm text-greenGray font-medium mb-4">
               {member.title}
             </p>
-            <p className="text-base text-softGray leading-relaxed">
+            <p className="text-base text-mediumGray leading-relaxed">
               {member.bio}
             </p>
           </motion.div>

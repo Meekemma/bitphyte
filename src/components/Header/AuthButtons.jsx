@@ -12,7 +12,7 @@ const AuthButtons = () => {
       </Link>
       <Link
         to="/signup"
-        className="bg-indigo text-white px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition"
+        className="bg-indigo text-softGray px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition"
       >
         Sign Up
       </Link>

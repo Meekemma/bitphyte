@@ -29,25 +29,25 @@ const Plan = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="plans" className="bg-gray-900 py-16 px-6">
+    <section id="plans" className="bg-gradient-to-r from-navy via-greenGray to-navy py-16 px-6">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-indigo mb-4 mt-4">Our Investment Plans</h2>
-        <p className="text-2xl md:text-lg text-gray-300 mb-10">Pick the plan that best fits your investment target</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-softGray mb-4 mt-4">Our Investment Plans</h2>
+        <p className="text-2xl md:text-lg text-mediumGray mb-10">Pick the plan that best fits your investment target</p>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className="bg-white/10 text-white p-6 rounded-2xl shadow-md hover:scale-105 hover:shadow-xl transition duration-300 border border-indigo-400/20"
+              className="bg-lightGray text-navy p-8 rounded-xl drop-shadow-lg shadow-dark shadow-xl hover:scale-105 hover:shadow-lightGray transition duration-300 border border-indigo"
             >
               <h3 className="font-bold text-indigo mb-4">{plan.title}</h3>
               <p className="text-lg mb-2 font-bold text-3xl">{plan.priceRange}</p>
-              <p className="text-lg mb-2 text-sm"><span className="font-semibold text-gray-300 text-sm">Daily Profit:</span> {plan.dailyProfit}</p>
-              <p className="text-lg mb-2 mt-8"><span className="font-semibold text-gray-300">Min Deposit:</span> {plan.minDeposit}</p>
-              <p className="text-lg mb-6"><span className="font-semibold text-gray-300">Max Deposit:</span> {plan.maxDeposit}</p>
+              <p className="text-lg mb-2 text-sm"><span className="font-semibold text-navy text-sm">Daily Profit:</span> {plan.dailyProfit}</p>
+              <p className="text-lg mb-2 mt-8"><span className="font-semibold text-navy">Min Deposit:</span> {plan.minDeposit}</p>
+              <p className="text-lg mb-6"><span className="font-semibold text-navy">Max Deposit:</span> {plan.maxDeposit}</p>
 
               <button
                 onClick={() => navigate("/signup")}
-                className="bg-indigo hover:bg-indigo mt- text-white font-semibold py-2 px-4 rounded-full w-full transition"
+                className="bg-indigo hover:bg-indigo mt- text-softGray font-semibold py-2 px-4 rounded-full w-full transition"
               >
                 Get Started
               </button>
