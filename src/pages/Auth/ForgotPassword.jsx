@@ -88,7 +88,7 @@ const ForgotPassword = () => {
               <button
                 onClick={handleForgot}
                 disabled={loading}
-                className="mt-3 text-indigo underline text-sm"
+                className="mt-3 text-softGray underline text-sm"
               >
                 Resend Link
               </button>
@@ -100,7 +100,7 @@ const ForgotPassword = () => {
                   setSubmitted(false);
                   setError("");
                 }}
-                className="text-mediumGray underline text-sm"
+                className="text-softGray underline text-sm"
               >
                 Edit email address
               </button>
