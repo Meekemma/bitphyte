@@ -49,7 +49,7 @@ const testimonials = [
 
 const Testimonial = () => {
   return (
-    <section className="bg-gray-950 text-softGray py-16 px-6">
+    <section className="bg-dark text-softGray py-16 px-6">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-softGray mb-4">What Our Clients Say</h2>
         <p className="text-mediumGray mb-12">Real stories from real investors who trust Bitphyte</p>

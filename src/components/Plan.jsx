@@ -33,7 +33,7 @@ const Plan = () => {
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-softGray mb-4 mt-4">Our Investment Plans</h2>
         <p className="text-2xl md:text-lg text-mediumGray mb-10">Pick the plan that best fits your investment target</p>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3 lg:grid-cols-3">
           {plans.map((plan, index) => (
             <div
               key={index}

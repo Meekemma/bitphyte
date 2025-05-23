@@ -29,7 +29,7 @@ const Login = () => {
 
         setTimeout(() => {
           setSuccessPopup(false);
-          navigate("/dashboard");
+          navigate("/dashboard/home");
         }, 3000);
       }, 1000);
     } catch (err) {

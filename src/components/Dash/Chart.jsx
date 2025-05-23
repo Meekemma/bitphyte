@@ -17,7 +17,23 @@ const coins = [
 
 const Chart = () => {
   const [showAll, setShowAll] = useState(false);
-  const visibleCoins = showAll ? coins : coins.slice(0, 4);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    // Handle screen size check for desktop view
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024); // Tailwind's lg breakpoint
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const visibleCoins = showAll
+    ? coins
+    : isDesktop
+    ? coins.slice(0, 4)
+    : coins.slice(0, 2);
 
   useEffect(() => {
     const loadWidgetScript = () => {
@@ -60,19 +76,25 @@ const Chart = () => {
         });
       })
       .catch(console.error);
-  }, [showAll]); // Re-run when showAll changes
+  }, [showAll, isDesktop]);
 
   return (
-    <div className="bg-dark text-softGray px-4 py-10">
+    <div className="bg-navy rounded-xl text-softGray px-1 py-4 mt-6 mb-6">
       <h2 className="text-3xl font-heading font-bold text-center mb-10">Live Crypto Market</h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-6">
+      <div
+        className={`grid gap-1 ${
+          visibleCoins.length === 2 && !isDesktop
+            ? "grid-cols-2 sm:grid-cols-2 justify-center place-items-center"
+            : "grid-cols-2 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4"
+        }`}
+      >
         {visibleCoins.map((coin, index) => {
           const containerId = `tradingview_${coin.symbol}_${index}`;
           return (
             <div
               key={index}
-              className="rounded-xl shadow-md border border-softGray p-2 bg-gradient-to-r from-navy via-greenGray to-navy text-softGray"
+              className="rounded-xl shadow-md border border-softGray p-2 bg-gradient-to-r from-navy via-greenGray to-navy text-softGray w-full"
             >
               <div id={containerId} className="w-full h-[220px]" />
               <p className="text-sm mt-2 text-center">{coin.name}</p>
@@ -84,7 +106,7 @@ const Chart = () => {
       <div className="flex justify-center mt-6">
         <button
           onClick={() => setShowAll(!showAll)}
-          className="px-6 py-2 rounded-md bg-greenGray text-navy font-semibold hover:bg-opacity-90 transition"
+          className="px-6 py-2 rounded-md bg-greenGray text-softGray font-semibold hover:bg-opacity-90 transition"
         >
           {showAll ? "Show Less" : "Show More"}
         </button>
@@ -94,7 +116,6 @@ const Chart = () => {
 };
 
 export default Chart;
-
 
 
 

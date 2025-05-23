@@ -91,8 +91,8 @@ export default function FaqPage() {
         </div>
 
         <div className="mt-16 text-center">
-          <h2 className="text-xl font-semibold text-softGray mb-2">Still have questions?</h2>
-          <p className="text-mediumGray mb-4">
+          <h2 className="text-xl font-semibold text-softGray mb-8">Still have questions?</h2>
+          <p className="text-mediumGray mb-8">
             Contact our support team or check our Help Center for more details.
           </p>
           <a
@@ -100,7 +100,6 @@ export default function FaqPage() {
             className="
             bg-indigo
             text-softGray
-            mt-20
             hover:bg-indigo-700 
             transition-colors 
             px-6 py-3 sm:px-8 sm:py-4 

@@ -87,6 +87,43 @@ const TermsOfService = () => {
         </p>
       </section>
 
+      <section className="mb-6">
+        <h2 className="text-2xl font-semibold mb-3 text-indigo">10. Withdrawals</h2>
+        <p>
+          BitPhyte processes withdrawal requests promptly and with great care. A fixed transaction fee of 1% is deducted from all withdrawal
+          amounts to support processing costs and blockchain fees. At this time, withdrawals are only supported in USDT (Tether) on the BEP20 network.
+        </p>
+        <p className="mt-2">
+          Although payments are typically fulfilled instantly, network congestion or verification processes may cause rare delays.
+          If your payment is not received within a reasonable timeframe, we encourage you to contact our support team at 
+          <a href="/contact" className="text-indigo underline mx-1">contact</a> or via email at <a href="mailto:support@bitphyte.com" className="text-indigo underline">support@bitphyte.com </a> 
+          for manual processing.
+        </p>
+        <p className="mt-2">
+          Please note that referral bonuses are not eligible for withdrawal until they are reviewed and verified by an administrator.
+          This verification process ensures fair use and compliance with our referral program terms.
+        </p>
+      </section>
+
+      <section className="mb-6">
+        <h2 className="text-2xl font-semibold mb-3 text-indigo">11. Deposits</h2>
+        <p>
+          Depositing into your BitPhyte account is simple and flexible. We offer three main investment plans:
+        </p>
+        <ul className="list-disc list-inside mt-2 ml-4">
+          <li><strong>Basic Plan</strong>: $100 - $9,999 | Daily Return: 2.5%</li>
+          <li><strong>Standard Plan</strong>: $10,000 - $99,999 | Daily Return: 3.2%</li>
+          <li><strong>Premium Plan</strong>: $100,000 - $500,000 | Daily Return: 5%</li>
+        </ul>
+        <p className="mt-2">
+          Deposits are made via supported cryptocurrencies, and once confirmed, your investment begins earning returns as per your selected plan.
+          You can track your earnings in real-time from your dashboard. All transactions are encrypted and secured with industry-standard technology.
+        </p>
+        <p className="mt-2">
+          BitPhyte encourages responsible investment. Ensure you only invest funds you can afford, and always review the details of your chosen plan before confirming your deposit.
+        </p>
+      </section>
+
       <button
         onClick={() => navigate("/")}
         className="mt-8 px-6 py-3 bg-indigo text-white font-semibold rounded hover:bg-indigo-700 transition-colors"
@@ -98,3 +135,4 @@ const TermsOfService = () => {
 };
 
 export default TermsOfService;
+
