@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const faqs = [
   {
@@ -35,7 +36,7 @@ const faqs = [
   {
     question: "Is there a mobile app?",
     answer:
-      "BitPhyte has it's mobile app under development and will be launched soon. In the meantime, you can access the platform via any mobile browser.",
+      "BitPhyte has its mobile app under development and will be launched soon. In the meantime, you can access the platform via any mobile browser.",
   },
   {
     question: "What support channels are available?",
@@ -55,16 +56,23 @@ const faqs = [
 ];
 
 export default function FaqPage() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(null); // ✅ fixed this line
+  const navigate = useNavigate();
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const handleContactSupport = () => {
+    navigate("/contact");
+  };
+
   return (
     <div className="min-h-screen bg-dark text-softGray py-12 px-6 md:px-20">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-heading text-softGray font-bold mb-10 text-center">Frequently Asked Questions</h1>
+        <h1 className="text-4xl font-heading text-softGray font-bold mb-10 text-center">
+          Frequently Asked Questions
+        </h1>
         <p className="text-center text-mediumGray mb-12">
           Got questions? We've got answers. Learn more about BitPhyte and how it works.
         </p>
@@ -95,29 +103,32 @@ export default function FaqPage() {
           <p className="text-mediumGray mb-8">
             Contact our support team or check our Help Center for more details.
           </p>
-          <a
-            href="/contact"
+          <button
+            onClick={handleContactSupport}
             className="
-            bg-indigo
-            text-softGray
-            hover:bg-indigo-700 
-            transition-colors 
-            px-6 py-3 sm:px-8 sm:py-4 
-            rounded-lg 
-            text-lg sm:text-xl 
-            font-semibold 
-            shadow-lg
-            focus:outline-none 
-            focus:ring-4 
-            focus:ring-indigo-400
-            focus:ring-opacity-50
+              bg-indigo
+              text-softGray
+              hover:bg-indigo-700 
+              transition-colors 
+              px-6 py-3 sm:px-8 sm:py-4 
+              rounded-lg 
+              text-lg sm:text-xl 
+              font-semibold 
+              shadow-lg
+              focus:outline-none 
+              focus:ring-4 
+              focus:ring-indigo-400
+              focus:ring-opacity-50
             "
           >
             Contact Support
-          </a>
+          </button>
         </div>
       </div>
     </div>
   );
 }
+
+
+
 

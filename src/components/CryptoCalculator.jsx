@@ -109,7 +109,7 @@ const CryptoCalculator = () => {
           <input
             value={amount}
             onChange={handleAmountChange}
-            className="w-full mb-6 p-2 rounded bg-navy text-navy font-mono text-lg focus:outline-none focus:ring-2 focus:ring-indigo"
+            className="w-full mb-6 p-2 rounded bg-navy text-softGray font-mono text-lg focus:outline-none focus:ring-2 focus:ring-indigo"
             placeholder="Enter amount"
           />
 
